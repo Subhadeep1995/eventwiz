@@ -64,10 +64,13 @@ class EventController extends Controller
             ->where('event_id', '=', $id)
             ->first();
         if(is_null($registered)){
-            return view('events.show', ['event'=>$event]);
+            $status = 0;
+            return view('events.show', compact('event', 'status'));
+            // return view('events.show', ['event'=>$event]);
         }
         else {
-            return 'yolo';
+            $status = 1;
+            return view('events.show', compact('event', 'status'));
         }
         
     }
