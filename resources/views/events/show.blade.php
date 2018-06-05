@@ -12,7 +12,7 @@
 				{{ csrf_field() }}
 				<input type="hidden" name="event_id" value="{{ $event->id }}">
 				<input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-				<button type="submit" class="btn btn-success" onClick="confirm('Are you sure?')">Register</button>
+				<button type="submit" class="btn btn-success">Register</button>
 			</form>
 		@else
 			<b>You have already registered for this event.</b>

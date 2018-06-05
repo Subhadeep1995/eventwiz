@@ -22,3 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/events', 'EventController');
 
 Route::resource('/eventsusers', 'EventsUsersController');
+
+Route::get('/admin', 'EventsUsersController@index');
+
+Route::get('admin/user/{id}/selected-events', 'EventsUsersController@show');

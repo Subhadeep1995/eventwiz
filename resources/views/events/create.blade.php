@@ -5,11 +5,16 @@
 	@if(Session::has('success'))
 	<div class="alert alert-success offset-md-3 col-md-6" role="alert">Event created successfully</div>
 	@endif
-	<form method="POST" action="/events">
+	
+	<div class="col-md-6 offset-md-3">
+		<div class="card">
+		<div class="card-header">
+			<h1>Create New Event</h1>
+		</div>
+		<div class="card-body">
+			<form method="POST" action="/events">
 		{{ csrf_field ()}}
-		<div class="form-group offset-md-3 col-md-6">
-
-			<h1>Create an Event</h1>
+		<div class="form-group">
 			<label for="eventTitle">Title</label>
 			<input type="text" class='form-control' id="eventTitle" name="eventTitle">
 
@@ -27,5 +32,8 @@
 			<button class="btn btn-primary" type="submit" class="form-control">Create Event</button>
 		</div>
 	</form>
+		</div>
+	</div>
+	</div>
 </div>
 @endsection

@@ -59,20 +59,24 @@ class EventController extends Controller
     public function show($id)
     {
         $event = Event::find($id);
-        $registered = DB::table('event_user')
-            ->where('user_id', '=', Auth::user()->id)
-            ->where('event_id', '=', $id)
-            ->first();
-        if(is_null($registered)){
-            $status = 0;
-            return view('events.show', compact('event', 'status'));
-            // return view('events.show', ['event'=>$event]);
-        }
-        else {
-            $status = 1;
-            return view('events.show', compact('event', 'status'));
+        if(Auth::check())
+        {
+            $registered = DB::table('event_user')
+                ->where('user_id', '=', Auth::user()->id)
+                ->where('event_id', '=', $id)
+                ->first();
+        
+            if(is_null($registered)){
+                $status = 0;
+                return view('events.show', compact('event', 'status'));
+            }
+            else {
+                $status = 1;
+                return view('events.show', compact('event', 'status'));
+            }
         }
         
+        return view('events.show', ['event'=>$event]);
     }
 
     /**
